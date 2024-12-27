@@ -1,0 +1,49 @@
+<header [class]="classes()">
+  <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-4">
+    <div
+      class="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between"
+    >
+      <div>
+        <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">Threads</h1>
+
+        <p class="mt-1.5 text-gray-500">
+          Say more with Threads. @if(user()?.email){ share thoughts and find out
+          what's going on. } @else { Join Threads to share thoughts, find out
+          what's going on, follow your people and more. }
+        </p>
+      </div>
+
+      @if(user()?.email){
+      <div class="flex items-center gap-4">
+        <button
+          (click)="logout()"
+          routerLink="signup"
+          class="inline-block rounded bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring"
+          type="button"
+        >
+          Logout
+        </button>
+      </div>
+      } @else{
+      <div class="flex items-center gap-4">
+        <button
+          routerLink="login"
+          class="inline-flex items-center justify-center gap-1.5 rounded border border-gray-200 bg-white px-5 py-3 text-gray-900 transition hover:text-gray-700 focus:outline-none focus:ring"
+          type="button"
+        >
+          <span class="text-sm font-medium"> Login </span>
+        </button>
+
+        <button
+          routerLink="signup"
+          class="inline-block rounded bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring"
+          type="button"
+        >
+          Signup
+        </button>
+      </div>
+
+      }
+    </div>
+  </div>
+</header>
