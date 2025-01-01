@@ -2,6 +2,8 @@
 
 A simple front-end for a threads-like messaging app (single user, for now).
 
+<img  src="./threads-app.gif"/>
+
 ## Features
 
 1. Secure Cookies Jwt Auth
