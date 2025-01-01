@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   commentService = inject(CommentsService)
   authService = inject(AuthService)
   stateService = inject(StateService)
-  userService = inject(StateService)
+  userService = inject(UserService)
   user = signal<User | null>(null)
 
 
@@ -34,14 +34,14 @@ export class HomeComponent implements OnInit {
       if (resp.email !== this.user()?.email) {
 
         alert("Not authenticated!")
-        this.userService.clearUser()
+        this.userService.deleteUserFromStorage()
         this.stateService.clearUser()
         this.router.navigate(["/login"])
       }
     },
       (_error) => {
         alert("Not authenticated!")
-        this.userService.clearUser()
+        this.userService.deleteUserFromStorage()
         this.stateService.clearUser()
         this.router.navigate(["/login"])
       })
