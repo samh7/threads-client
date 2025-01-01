@@ -12,6 +12,7 @@ export class AuthGuardService implements CanActivate {
   router = inject(Router)
   userService = inject(UserService)
   stateService = inject(StateService)
+  authService = inject(AuthService)
 
   user = signal<User | null>(null);
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
@@ -20,6 +21,21 @@ export class AuthGuardService implements CanActivate {
       this.router.navigate(["/"])
       return false
     }
+
+    this.authService.status().subscribe((resp) => {
+      if (resp.email !== this.user()?.email) {
+
+        this.stateService.clearUser()
+        this.userService.deleteUserFromStorage()
+        this.router.navigate(["/"])
+      }
+    },
+      (_error) => {
+        this.userService.deleteUserFromStorage()
+        this.stateService.clearUser()
+        this.router.navigate(["/"])
+      })
+
 
     this.stateService.setUser(this.user()!)
     return true
