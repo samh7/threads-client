@@ -9,7 +9,7 @@ A simple front-end for a threads-like messaging app (single user, for now).
 1. Secure Cookies Jwt Auth
 2. Route guards
 3. Comment threading
-4. Likes (Coming soon)
+
 
 ## Development server
 
