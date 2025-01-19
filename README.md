@@ -1,6 +1,6 @@
 # ThreadsClient
 
-A simple front-end for a threads-like messaging app (single user, for now).
+A simple front-end for a threads-like app.
 
 <img  src="./threads-app.gif"/>
 
